@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "lastName": "Doe",
+  "firstName": "John",
+  "nickName": "Johnny",
+  "address": "123 Main St",
+  "idNumber": "ID123456",
+  "currentTown": "Abuja",
+  "homeTown": "Taraku",
+  "birthOfBirth": "1990-01-01",
+  "createdOn": "2022-02-14T12:30:00",
+  "updatedOn": null,
+  "organization": null
+}
