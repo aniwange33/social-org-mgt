@@ -167,7 +167,7 @@ class MemberServiceTest {
     private static AggregateReference<Organization, Integer> getOrganizationIntegerAggregateReference() {
         Organization organization =
                 new Organization(1,"GMSB",LocalDate.of(2022, 2,1));
-        AggregateReference<Organization, Integer> orgIntegerAggregateReference = AggregateReference.to(organization.id());
+        AggregateReference<Organization, Integer> orgIntegerAggregateReference = AggregateReference.to(organization.getId());
         return orgIntegerAggregateReference;
     }
     private static MemberCommandDto getMemberDto() {

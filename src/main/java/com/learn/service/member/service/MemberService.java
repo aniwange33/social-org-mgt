@@ -37,7 +37,7 @@ public class MemberService {
         Organization organization = organizationRepository.findById(orgId)
                 .orElseThrow(() -> new EntityNotFoundException("Organization not found for ID: " + memberDto.orgId()));
 
-        AggregateReference<Organization, Integer> org = AggregateReference.to(organization.id());
+        AggregateReference<Organization, Integer> org = AggregateReference.to(organization.getId());
 
         Member member = new Member();
         BeanUtils.copyProperties(memberDto, member);
