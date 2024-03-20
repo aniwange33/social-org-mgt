@@ -63,6 +63,7 @@ public class MemberService {
         AggregateReference<Organization, Integer> organizationAg = member.getOrganization();
         if(organizationAg != null){
             Integer id = organizationAg.getId();
+            assert id != null;
             Organization organization =
                     organizationRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(OrgNotFoundMessage));
             return new MemberRepresentationDto(member,organization);
