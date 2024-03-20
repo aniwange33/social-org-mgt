@@ -18,11 +18,8 @@ public class OrganizationService {
     public Integer createNewOrganization(OrganizationCommandDto request){
         Objects.requireNonNull(OrganizationCommandDto.class, "Cannot be null");
         Organization organization = new Organization(request.name(), request.dateEstablished());
-        log.info("payload {}", organization.toString());
         Organization saveOrganization = organizationRepository.save(organization);
-        Integer id = saveOrganization.getId();
-        log.info("id {}", id);
-        return id;
+        return saveOrganization.getId();
     }
 
     public Optional<Organization> getOrganizationById(Integer id) {
