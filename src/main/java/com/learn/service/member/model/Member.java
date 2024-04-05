@@ -1,9 +1,6 @@
 package com.learn.service.member.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.jdbc.core.mapping.AggregateReference;
 
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class Member {
     @Id
     private Long id;
@@ -29,33 +27,6 @@ public class Member {
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
     private AggregateReference<Organization, Integer> organization;
-
-    public Member(
-            Long id,
-            String lastName,
-            String firstName,
-            String nickName,
-            String address,
-            String idNumber,
-            String currentTown,
-            String homeTown,
-            LocalDate birthOfBirth,
-            LocalDateTime createdOn,
-            LocalDateTime updatedOn,
-            AggregateReference<Organization, Integer> organization) {
-        this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.nickName = nickName;
-        this.address = address;
-        this.idNumber = idNumber;
-        this.currentTown = currentTown;
-        this.homeTown = homeTown;
-        this.birthOfBirth = birthOfBirth;
-        this.createdOn = createdOn;
-        this.updatedOn = updatedOn;
-        this.setOrganization(organization);
-    }
 }
         
 

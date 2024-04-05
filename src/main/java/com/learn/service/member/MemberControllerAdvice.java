@@ -21,6 +21,11 @@ public class MemberControllerAdvice {
     public ResponseEntity<String> handleDbActionExecutionException(DbActionExecutionException ex) {
         return new ResponseEntity<>("Sql violation: \n "+ ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return new ResponseEntity<>( ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
 
 
