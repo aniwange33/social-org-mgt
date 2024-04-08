@@ -61,14 +61,14 @@ public class MemberService {
         Member member = memberRepository.findById(requestId)
                 .orElseThrow(() -> new EntityNotFoundException(MemberNotFoundMessage));
         AggregateReference<Organization, Integer> organizationAg = member.getOrganization();
-        if(organizationAg != null){
+        if (organizationAg != null) {
             Integer id = organizationAg.getId();
             assert id != null;
             Organization organization =
                     organizationRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(OrgNotFoundMessage));
-            return new MemberRepresentationDto(member,organization);
+            return new MemberRepresentationDto(member, organization);
         }
-        return new MemberRepresentationDto(member,null);
+        return new MemberRepresentationDto(member, null);
 
     }
 
@@ -76,6 +76,15 @@ public class MemberService {
     public List<Member> getMembers() {
         return StreamSupport.stream(memberRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+
+    }
+
+    public void updateAMember(Long requestId, MemberCommandDto request) {
+        Member member = memberRepository.findById(requestId)
+                .orElseThrow(() -> new EntityNotFoundException("Member not found for ID: " + requestId));
+        BeanUtils.copyProperties(request, member);
+        member.setUpdatedOn(LocalDateTime.now());
+        memberRepository.save(member);
 
     }
 }

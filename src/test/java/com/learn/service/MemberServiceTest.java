@@ -186,4 +186,41 @@ class MemberServiceTest {
         );
         return member;
     }
+    // Write a test method for updateAMember
+    @Test
+    void testUpdateAMember() {
+        Long memberId = 1L;
+        MemberCommandDto memberDto = getMemberDto();
+        AggregateReference<Organization, Integer> org
+                = getOrganizationIntegerAggregateReference();
+        Member member = new Member(
+                1L,
+                "Doe",
+                "John",
+                "Johnny",
+                "123 Main St",
+                "ID123456",
+                "Abuja",
+                "Taraku",
+                LocalDate.parse("1990-01-01"),
+                LocalDateTime.of(2022, 2, 14, 12, 30),
+                null,
+                org
+        );
+        when(memberRepository.findById(memberId)).thenReturn(Optional.of(member));
+        memberService.updateAMember(memberId, memberDto);
+        verify(memberRepository, times(1)).findById(memberId);
+        verify(memberRepository, times(1)).save(any(Member.class));
+    }
+    //test for updateAMember when member is not found
+    @Test
+    void testUpdateAMemberNotFound() {
+        Long memberId = 1L;
+        MemberCommandDto memberDto = getMemberDto();
+        when(memberRepository.findById(memberId)).
+                thenReturn(Optional.empty());
+        assertThrows(EntityNotFoundException.class, () -> memberService.updateAMember(memberId, memberDto));
+        verify(memberRepository, times(1)).findById(memberId);
+        verify(memberRepository, never()).save(any(Member.class));
+    }
 }

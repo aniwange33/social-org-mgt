@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -80,13 +81,12 @@ class MemberApplicationTest {
                 null
         );
 
-        Organization organization = new Organization (1, "GMSB", LocalDate.of(2022, 2, 1));
+        Organization organization = new Organization(1, "GMSB", LocalDate.of(2022, 2, 1));
 
-        MemberRepresentationDto memberResponseDto = new MemberRepresentationDto(member,organization);
-// Assuming member response DTO
+        MemberRepresentationDto memberResponseDto = new MemberRepresentationDto(member, organization);
+        // Assuming member response DTO
 
         when(memberService.getAMemberById(memberId)).thenReturn(memberResponseDto);
-
         mockMvc.perform(MockMvcRequestBuilders.get("/members/{requestId}", memberId))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
@@ -97,6 +97,32 @@ class MemberApplicationTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/members"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+    //write a test for updating a member
+    @Test
+    void updateAMember() throws Exception {
+        MemberCommandDto memberDto = new MemberCommandDto(
+                "Doe",
+                "John",
+                "Johnny",
+                "123 Main St",
+                "ID123456",
+                "Abuja",
+                "Taraku",
+                LocalDate.parse("1990-01-01"),
+                null,
+                null,
+                1
+        );
+        Long memberId = 1L; // Assuming member ID returned by service
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/members/{requestId}", memberId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberDto)))
+                .andExpect(MockMvcResultMatchers.status().isNoContent());
+    }
+
+
 
 
 

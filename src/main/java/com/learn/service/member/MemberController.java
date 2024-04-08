@@ -31,6 +31,13 @@ public class MemberController {
 
     }
 
+//    write a method to update a member and return 204 status code
+    @PutMapping("/{requestId}")
+    public ResponseEntity<Void> updateAMember(@PathVariable("requestId") Long requestId, @RequestBody MemberCommandDto request) {
+        memberService.updateAMember(requestId, request);
+        return ResponseEntity.noContent().build();
+    }
+
 
     @GetMapping("/{requestId}")
     public ResponseEntity<MemberRepresentationDto> getAMember(@PathVariable("requestId") Long requestId) {

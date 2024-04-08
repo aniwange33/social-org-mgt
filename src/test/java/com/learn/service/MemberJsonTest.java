@@ -24,6 +24,7 @@ class MemberJsonTest {
     void memberSerializationTest() throws IOException {
         AggregateReference<Organization, Integer> orgIntegerAggregateReference =
                 getOrganizationIntegerAggregateReference();
+
         Member member = new Member(
                 1L,
                 "Doe",
@@ -33,7 +34,7 @@ class MemberJsonTest {
                 "ID123456",
                 "Abuja",
                 "Taraku",
-                LocalDate.parse("1990-01-01"),
+                LocalDate.of(1990, 1, 1),
                 LocalDateTime.of(2022, 2, 14, 12, 30),
                 null,
                 null
@@ -67,7 +68,7 @@ class MemberJsonTest {
                   "idNumber": "ID123456",
                   "currentTown": "Abuja",
                   "homeTown": "Taraku",
-                  "birthOfBirth": "1990-01-01",
+                  "dateOfBirth": "1990-01-01",
                   "createdOn": "2022-02-14T12:30:00",
                   "updatedOn": null,
                   "organization":null
@@ -82,7 +83,7 @@ class MemberJsonTest {
                 "ID123456",
                 "Abuja",
                 "Taraku",
-                LocalDate.parse("1990-01-01"),
+                LocalDate.of(1990, 1, 1),
                 LocalDateTime.of(2022, 2, 14, 12, 30),
                 null,
                 null
