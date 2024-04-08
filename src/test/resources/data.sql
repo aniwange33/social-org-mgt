@@ -9,7 +9,7 @@ INSERT INTO member(
                      id_number,
                      current_town,
                      home_town,
-                     birth_of_birth)
+                     date_of_birth)
 VALUES (
         'Doe',
         'John',

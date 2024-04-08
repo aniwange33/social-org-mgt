@@ -15,7 +15,7 @@ CREATE TABLE Member (
                         id_number VARCHAR(255) UNIQUE NOT NULL,
                         current_town VARCHAR(255),
                         home_town VARCHAR(255),
-                        birth_of_birth DATE NOT NULL,
+                        date_of_birth DATE NOT NULL,
                         created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                         updated_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                         organization BIGINT,

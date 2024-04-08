@@ -13,7 +13,7 @@ public record MemberCommandDto(
         String idNumber,
         String currentTown,
         String homeTown,
-        LocalDate birthOfBirth,
+        LocalDate dateOfBirth,
         LocalDateTime createdOn,
         LocalDateTime updatedOn,
         Integer orgId
