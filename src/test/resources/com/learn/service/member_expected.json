@@ -7,7 +7,7 @@
   "idNumber": "ID123456",
   "currentTown": "Abuja",
   "homeTown": "Taraku",
-  "birthOfBirth": "1990-01-01",
+  "dateOfBirth": "1990-01-01",
   "createdOn": "2022-02-14T12:30:00",
   "updatedOn": null,
   "organization": null

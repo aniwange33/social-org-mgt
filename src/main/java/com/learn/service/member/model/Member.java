@@ -23,7 +23,7 @@ public class Member {
     private String idNumber;
     private String currentTown;
     private String homeTown;
-    private LocalDate birthOfBirth;
+    private LocalDate dateOfBirth;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
     private AggregateReference<Organization, Integer> organization;
